@@ -1,12 +1,7 @@
 # moocDashboard
 
-Dashboard con las siguientes variables según el nivel de ventas de los cursos:
+Dashboard creado usando Streamlit que muestra datos de diversos .csv extraidos de MOOCs en una presentación sencilla y facil de digerir.
 
-* Precio
-* Idioma
-* Nivel del curso
-* Rating
-* Plataforma
-* Duración del curso
+### Uso
 
-Este Dashboard, hecho en Streamly, presentará un numero de métricas con las cuales explicar que tipo de cursos suelen recibir más atención y mayor exito en las plataformas de las cuales se han extraido los datos.
+Instale los paquetes necesarios ejecutando `pip install -r "requirements.txt"` en la carpeta raíz del repositorio. Después, entre en la carpeta moocdashboard y ejecute init.py utilizando streamlit, con el comando `streamlit run init.py`.

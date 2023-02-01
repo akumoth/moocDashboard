@@ -5,12 +5,13 @@ import wordcloud as wc
 import matplotlib.pyplot as plt
 from datetime import date
 import numpy as np
+import math
 
 st.title("Udemy Dashboard - 2017")
 udemy_df = pd.read_csv("../data/raw/udemy_courses.csv")
 udemy_df.published_timestamp = udemy_df.apply(lambda x: x['published_timestamp'][:-10],axis=1)
 udemy_df.published_timestamp = pd.to_datetime(udemy_df.published_timestamp)
-udemy_df = udemy_df.assign(kpi=(udemy_df.price * udemy_df.num_subscribers)/((abs((udemy_df.published_timestamp - pd.to_datetime('2018-01-01'))/np.timedelta64(1,'M')))/udemy_df.content_duration))
+udemy_df = udemy_df.assign(kpi=((udemy_df.price * udemy_df.num_subscribers)/(abs((udemy_df.published_timestamp - pd.to_datetime('2018-01-01'))/np.timedelta64(1,'M')))/udemy_df.content_duration))
 
 year_month = st.sidebar.slider(
     "Rango de tiempo",
@@ -62,12 +63,12 @@ if levelfilter == True:
     current_view = current_view[current_view.level == level]
 
 umetric1, umetric2, umetric3 = st.columns(3)
-profits = str((current_view.price * current_view.num_subscribers).sum())
-subsnum = str(current_view.num_subscribers.sum())
+profits = ("{:,}".format(math.floor(((current_view.price * current_view.num_subscribers).sum())/100000))) + "M"
+subsnum = "{:,}".format(math.floor((current_view.num_subscribers.sum())/100000)) + "M"
 with umetric1:
-    st.metric("Estimado de las ganancias totales:", value=(profits[:3] + 'K$'))
+    st.metric("Estimado de las ganancias totales:", value=(profits))
 with umetric2:
-    st.metric("Usuarios totales:", value=(profits[:3] + 'K'))
+    st.metric("Numero de suscripciones:", value=(subsnum))
 with umetric3:
     st.metric("Numero de cursos:", current_view.course_title.value_counts().sum())
 
