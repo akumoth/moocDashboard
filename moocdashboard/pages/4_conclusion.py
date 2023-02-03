@@ -4,7 +4,7 @@ import pandas as pd
 st.markdown(
     '''
     * Los cursos con mayor KPI a lo largo de las distintas disciplinas son siempre aquellos destinados a principiantes\n
-    * Sin embargo, vemos que la ganancia promedia por venta de curso aumenta bastante en los cursos destinados 
+    * Sin embargo, vemos que la ganancia promedio por venta de curso aumenta bastante en los cursos destinados 
     a personas con conocimiento intermedio o experto\n
     * En orden de mayor KPI a menos KPI en los cursos de Udemy, tenemos las siguientes disciplinas: Web Development, 
     Graphic Design, Business Finance, y Musical Instruments. Sin embargo, a pesar de su exito, los cursos de Graphic 
